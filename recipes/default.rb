@@ -17,16 +17,16 @@
 # limitations under the License.
 
 telegraf_install 'default' do
-  include_repository node['telegraf']['include_repository']
-  install_version node['telegraf']['version']
-  install_type node['telegraf']['install_type']
+  include_repository lazy { node['telegraf']['include_repository'] }
+  install_version lazy { node['telegraf']['version'] }
+  install_type lazy { node['telegraf']['install_type'] }
   action :create
 end
 
 telegraf_config 'default' do
-  path node['telegraf']['config_file_path']
-  config node['telegraf']['config']
-  outputs node['telegraf']['outputs']
-  perf_counters node['telegraf']['perf_counters']
-  inputs node['telegraf']['inputs']
+  path lazy { node['telegraf']['config_file_path'] }
+  config lazy { node['telegraf']['config'] }
+  outputs lazy { node['telegraf']['outputs'] }
+  perf_counters lazy { node['telegraf']['perf_counters'] }
+  inputs lazy { node['telegraf']['inputs'] }
 end
